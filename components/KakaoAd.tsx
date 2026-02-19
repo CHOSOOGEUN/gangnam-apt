@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 interface Props {
   adUnit: string;
@@ -15,8 +15,6 @@ declare global {
 }
 
 export default function KakaoAd({ adUnit, width, height }: Props) {
-  const ref = useRef<HTMLInsElement>(null);
-
   useEffect(() => {
     if (typeof window !== "undefined" && window.kakaoAdfit) {
       window.kakaoAdfit.display(adUnit);
@@ -25,7 +23,6 @@ export default function KakaoAd({ adUnit, width, height }: Props) {
 
   return (
     <ins
-      ref={ref}
       className="kakao_ad_area"
       style={{ display: "none" }}
       data-ad-unit={adUnit}
