@@ -15,28 +15,21 @@ interface Props {
   formatCount: (count: number) => string;
 }
 
-const FUNNY_COMMENTS = [
-  "열심히 사세요 ^^",
-  "다음 생을 기약하세요 🙏",
-  "포기가 답입니다",
-  "로또가 현실적입니다",
-  "지방이 살기 좋습니다 🏡",
-];
-
 interface Level {
   emoji: string;
   label: string;
   color: string;
   bg: string;
+  comment: string;
 }
 
 function getLevel(months: number): Level {
   const years = months / 12;
-  if (years < 15)  return { emoji: "💪", label: "희망 레벨",  color: "#4ade80", bg: "rgba(74,222,128,0.12)" };
-  if (years < 30)  return { emoji: "😤", label: "노력 레벨",  color: "#fbbf24", bg: "rgba(251,191,36,0.12)" };
-  if (years < 50)  return { emoji: "😢", label: "절망 레벨",  color: "#f97316", bg: "rgba(249,115,22,0.12)" };
-  if (years < 80)  return { emoji: "😱", label: "공포 레벨",  color: "#ef4444", bg: "rgba(239,68,68,0.12)"  };
-  return             { emoji: "💀", label: "지옥 레벨",  color: "#a855f7", bg: "rgba(168,85,247,0.12)" };
+  if (years < 15)  return { emoji: "💪", label: "희망 레벨",  color: "#4ade80", bg: "rgba(74,222,128,0.12)",  comment: "열심히 하면 가능해요!" };
+  if (years < 30)  return { emoji: "😤", label: "노력 레벨",  color: "#fbbf24", bg: "rgba(251,191,36,0.12)",  comment: "열심히 사세요 ^^" };
+  if (years < 50)  return { emoji: "😢", label: "절망 레벨",  color: "#f97316", bg: "rgba(249,115,22,0.12)",  comment: "지방이 살기 좋습니다 🏡" };
+  if (years < 80)  return { emoji: "😱", label: "공포 레벨",  color: "#ef4444", bg: "rgba(239,68,68,0.12)",   comment: "포기가 답입니다" };
+  return             { emoji: "💀", label: "지옥 레벨",  color: "#a855f7", bg: "rgba(168,85,247,0.12)",  comment: "다음 생을 기약하세요 🙏" };
 }
 
 function useCountUp(target: number, duration = 1400) {
@@ -70,8 +63,8 @@ export default function ResultCard({
   const cardRef = useRef<HTMLDivElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const animatedMonths = useCountUp(months);
-  const comment = FUNNY_COMMENTS[Math.floor(salary / 100) % FUNNY_COMMENTS.length];
   const level = getLevel(months);
+  const comment = level.comment;
 
   // 흔들림 + 진입 애니메이션
   useEffect(() => {
