@@ -248,7 +248,7 @@ export default function Home() {
 
       {result && (
         <div className="flex justify-center pb-6">
-          <KakaoAd adUnit="DAN-XXXXXXXXXXXXXXXX" width={320} height={50} />
+          <KakaoAd adUnit="DAN-MrHcRNVMy2bQlG6t" width={320} height={50} />
         </div>
       )}
 
