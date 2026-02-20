@@ -8,38 +8,41 @@ interface Props {
   height: number;
 }
 
-declare global {
-  interface Window {
-    adfit?: { destroy: (unit: string) => void };
-  }
-}
-
 export default function KakaoAd({ adUnit, width, height }: Props) {
-  const scriptElementWrapper = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (scriptElementWrapper.current) {
-      const script = document.createElement("script");
-      script.setAttribute("src", "https://t1.daumcdn.net/kas/static/ba.min.js");
-      script.setAttribute("async", "true");
-      scriptElementWrapper.current.appendChild(script);
+    const container = containerRef.current;
+    if (!container) return;
 
-      return () => {
-        const globalAdfit = window.adfit;
-        if (globalAdfit) globalAdfit.destroy(adUnit);
-      };
+    // Clean up if it already has children (React 18 Strict Mode handling)
+    if (container.children.length > 0) {
+      container.innerHTML = "";
     }
-  }, [adUnit]);
 
-  return (
-    <div ref={scriptElementWrapper}>
-      <ins
-        className="kakao_ad_area"
-        style={{ display: "none" }}
-        data-ad-unit={adUnit}
-        data-ad-width={String(width)}
-        data-ad-height={String(height)}
-      />
-    </div>
-  );
+    const ins = document.createElement("ins");
+    ins.className = "kakao_ad_area";
+    ins.style.display = "none";
+    ins.setAttribute("data-ad-width", String(width));
+    ins.setAttribute("data-ad-height", String(height));
+    ins.setAttribute("data-ad-unit", adUnit);
+    container.appendChild(ins);
+
+    const script = document.createElement("script");
+    script.src = "https://t1.daumcdn.net/kas/static/ba.min.js";
+    script.async = true;
+    container.appendChild(script);
+
+    return () => {
+      if (container) {
+        const globalAdfit = (window as any).adfit;
+        if (globalAdfit) {
+          globalAdfit.destroy(adUnit);
+        }
+        container.innerHTML = "";
+      }
+    };
+  }, [adUnit, width, height]);
+
+  return <div ref={containerRef} className="w-full flex justify-center my-2" />;
 }
