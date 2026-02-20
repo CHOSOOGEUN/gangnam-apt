@@ -56,8 +56,9 @@ export default function Home() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const s = params.get("s");
-    if (s && !isNaN(Number(s))) {
-      setSalary(Number(s).toLocaleString());
+    const num = Number(s);
+    if (s && !isNaN(num) && num > 0 && num <= 100_000) {
+      setSalary(num.toLocaleString());
     }
   }, []);
 

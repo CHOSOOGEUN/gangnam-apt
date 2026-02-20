@@ -90,14 +90,22 @@ export default function ResultCard({
     }
   };
 
-  const handleShare = () => {
+  const handleShare = async () => {
     const url = `${window.location.origin}?s=${salary}`;
     const text = `월급 ${salary.toLocaleString()}만원으로 ${regionName} 아파트 사려면 ${formatYears(months)} 걸린다고?! ${level.emoji}\n👉 내 월급도 계산해보기: ${url}`;
     if (navigator.share) {
-      navigator.share({ title: "내 월급으로 아파트 사려면?", text, url });
+      try {
+        await navigator.share({ title: "내 월급으로 아파트 사려면?", text, url });
+      } catch {
+        // 사용자가 공유 취소한 경우 무시
+      }
     } else {
-      navigator.clipboard.writeText(text);
-      alert("클립보드에 복사됐어요! 카톡이나 인스타에 공유해보세요 😄");
+      try {
+        await navigator.clipboard.writeText(text);
+        alert("클립보드에 복사됐어요! 카톡이나 인스타에 공유해보세요 😄");
+      } catch {
+        alert("복사 실패. 직접 URL을 복사해주세요: " + url);
+      }
     }
   };
 

@@ -42,7 +42,7 @@ export default function RootLayout({
       >
         {children}
         <Script
-          src="//t1.daumcdn.net/kas/static/ba.min.js"
+          src="https://t1.daumcdn.net/kas/static/ba.min.js"
           strategy="afterInteractive"
         />
       </body>
