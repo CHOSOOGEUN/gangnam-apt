@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Script from "next/script";
 import ResultCard from "@/components/ResultCard";
 import Confetti from "@/components/Confetti";
-import KakaoAd from "@/components/KakaoAd";
 
 export const REGIONS = [
   { name: "강남", emoji: "👑", price: 3_000_000_000 },
@@ -251,13 +251,37 @@ export default function Home() {
 
       {result && (
         <div className="flex justify-center pb-6">
-          <KakaoAd adUnit="DAN-MrHcRNVMy2bQlG6t" width={320} height={50} />
+          <ins
+            className="kakao_ad_area"
+            style={{ display: "none" }}
+            data-ad-unit="DAN-MrHcRNVMy2bQlG6t"
+            data-ad-width="320"
+            data-ad-height="50"
+          ></ins>
+          <Script
+            type="text/javascript"
+            src="//t1.daumcdn.net/kas/static/ba.min.js"
+            async
+            strategy="afterInteractive"
+          />
         </div>
       )}
 
       {result && (
         <div className="flex justify-center pb-4">
-          <KakaoAd adUnit="DAN-M0niQMYer1DWHOUH" width={300} height={250} />
+          <ins
+            className="kakao_ad_area"
+            style={{ display: "none" }}
+            data-ad-unit="DAN-M0niQMYer1DWHOUH"
+            data-ad-width="300"
+            data-ad-height="250"
+          ></ins>
+          <Script
+            type="text/javascript"
+            src="//t1.daumcdn.net/kas/static/ba.min.js"
+            async
+            strategy="afterInteractive"
+          />
         </div>
       )}
 
@@ -270,7 +294,19 @@ export default function Home() {
         className="fixed bottom-0 left-0 right-0 flex justify-center z-50"
         style={{ background: "rgba(5,5,15,0.9)", backdropFilter: "blur(8px)" }}
       >
-        <KakaoAd adUnit="DAN-TkltDIU8Q3h51GuJ" width={320} height={50} />
+        <ins
+          className="kakao_ad_area"
+          style={{ display: "none" }}
+          data-ad-unit="DAN-TkltDIU8Q3h51GuJ"
+          data-ad-width="320"
+          data-ad-height="50"
+        ></ins>
+        <Script
+          type="text/javascript"
+          src="//t1.daumcdn.net/kas/static/ba.min.js"
+          async
+          strategy="afterInteractive"
+        />
       </div>
     </main>
   );
