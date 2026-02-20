@@ -28,11 +28,6 @@ export default function KakaoAd({ adUnit, width, height }: Props) {
     ins.setAttribute("data-ad-unit", adUnit);
     container.appendChild(ins);
 
-    const script = document.createElement("script");
-    script.src = "https://t1.daumcdn.net/kas/static/ba.min.js";
-    script.async = true;
-    container.appendChild(script);
-
     return () => {
       if (container) {
         const globalAdfit = (window as any).adfit;
@@ -44,5 +39,5 @@ export default function KakaoAd({ adUnit, width, height }: Props) {
     };
   }, [adUnit, width, height]);
 
-  return <div ref={containerRef} className="w-full flex justify-center my-2" />;
+  return <div ref={containerRef} />;
 }
