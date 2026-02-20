@@ -7,7 +7,9 @@ import KakaoAd from "@/components/KakaoAd";
 
 export const REGIONS = [
   { name: "강남", emoji: "👑", price: 3_000_000_000 },
+  { name: "서초", emoji: "🎓", price: 2_500_000_000 },
   { name: "마용성", emoji: "🏙️", price: 1_500_000_000 },
+  { name: "송파", emoji: "🏢", price: 1_800_000_000 },
   { name: "판교", emoji: "💼", price: 800_000_000 },
   { name: "지방", emoji: "🏡", price: 300_000_000 },
 ];
@@ -140,7 +142,7 @@ export default function Home() {
         >
           {/* 지역 탭 */}
           <p className="text-xs text-gray-400 mb-2 tracking-widest uppercase font-semibold">지역 선택</p>
-          <div className="grid grid-cols-4 gap-1.5 mb-5">
+          <div className="grid grid-cols-3 gap-1.5 mb-5">
             {REGIONS.map((r, i) => (
               <button
                 key={r.name}

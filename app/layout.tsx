@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://gangnam-apt.vercel.app"),
   title: "내 월급으로 강남 아파트 사려면? 😱",
   description:
     "밥도 안 먹고, 한 푼도 안 쓰고 저축만 한다면 강남 아파트 살 수 있을까? 지금 계산해보세요.",
