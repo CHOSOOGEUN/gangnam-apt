@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Script from "next/script";
 import ResultCard from "@/components/ResultCard";
 import Confetti from "@/components/Confetti";
 
@@ -249,23 +250,37 @@ export default function Home() {
       )}
 
       {result && (
-        <ins
-          className="kakao_ad_area"
-          style={{ display: "none" }}
-          data-ad-unit="DAN-MrHcRNVMy2bQlG6t"
-          data-ad-width="320"
-          data-ad-height="50"
-        ></ins>
+        <>
+          <ins
+            className="kakao_ad_area"
+            style={{ display: "none" }}
+            data-ad-unit="DAN-MrHcRNVMy2bQlG6t"
+            data-ad-width="320"
+            data-ad-height="50"
+          ></ins>
+          <Script
+            type="text/javascript"
+            src="//t1.daumcdn.net/kas/static/ba.min.js"
+            async
+          />
+        </>
       )}
 
       {result && (
-        <ins
-          className="kakao_ad_area"
-          style={{ display: "none" }}
-          data-ad-unit="DAN-M0niQMYer1DWHOUH"
-          data-ad-width="300"
-          data-ad-height="250"
-        ></ins>
+        <>
+          <ins
+            className="kakao_ad_area"
+            style={{ display: "none" }}
+            data-ad-unit="DAN-M0niQMYer1DWHOUH"
+            data-ad-width="300"
+            data-ad-height="250"
+          ></ins>
+          <Script
+            type="text/javascript"
+            src="//t1.daumcdn.net/kas/static/ba.min.js"
+            async
+          />
+        </>
       )}
 
       <footer className="text-center text-gray-600 text-xs pb-20">
@@ -279,6 +294,11 @@ export default function Home() {
         data-ad-width="320"
         data-ad-height="50"
       ></ins>
+      <Script
+        type="text/javascript"
+        src="//t1.daumcdn.net/kas/static/ba.min.js"
+        async
+      />
     </main>
   );
 }

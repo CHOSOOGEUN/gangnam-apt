@@ -40,11 +40,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <script
-          async
-          type="text/javascript"
-          src="//t1.daumcdn.net/kas/static/ba.min.js"
-        ></script>
       </body>
     </html>
   );
