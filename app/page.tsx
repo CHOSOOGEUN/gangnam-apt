@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Script from "next/script";
 import ResultCard from "@/components/ResultCard";
 import Confetti from "@/components/Confetti";
 
@@ -258,12 +257,6 @@ export default function Home() {
             data-ad-width="320"
             data-ad-height="50"
           ></ins>
-          <Script
-            type="text/javascript"
-            src="//t1.daumcdn.net/kas/static/ba.min.js"
-            async
-            strategy="afterInteractive"
-          />
         </div>
       )}
 
@@ -276,12 +269,6 @@ export default function Home() {
             data-ad-width="300"
             data-ad-height="250"
           ></ins>
-          <Script
-            type="text/javascript"
-            src="//t1.daumcdn.net/kas/static/ba.min.js"
-            async
-            strategy="afterInteractive"
-          />
         </div>
       )}
 
@@ -301,12 +288,6 @@ export default function Home() {
           data-ad-width="320"
           data-ad-height="50"
         ></ins>
-        <Script
-          type="text/javascript"
-          src="//t1.daumcdn.net/kas/static/ba.min.js"
-          async
-          strategy="afterInteractive"
-        />
       </div>
     </main>
   );
