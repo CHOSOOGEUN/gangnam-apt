@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 interface Props {
   adUnit: string;
@@ -10,23 +10,36 @@ interface Props {
 
 declare global {
   interface Window {
-    kakaoAdfit?: { display: (unit: string) => void };
+    adfit?: { destroy: (unit: string) => void };
   }
 }
 
 export default function KakaoAd({ adUnit, width, height }: Props) {
+  const scriptElementWrapper = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    if (typeof window !== "undefined" && window.kakaoAdfit) {
-      window.kakaoAdfit.display(adUnit);
+    if (scriptElementWrapper.current) {
+      const script = document.createElement("script");
+      script.setAttribute("src", "https://t1.daumcdn.net/kas/static/ba.min.js");
+      script.setAttribute("async", "true");
+      scriptElementWrapper.current.appendChild(script);
+
+      return () => {
+        const globalAdfit = window.adfit;
+        if (globalAdfit) globalAdfit.destroy(adUnit);
+      };
     }
   }, [adUnit]);
 
   return (
-    <ins
-      className="kakao_ad_area"
-      data-ad-unit={adUnit}
-      data-ad-width={String(width)}
-      data-ad-height={String(height)}
-    />
+    <div ref={scriptElementWrapper}>
+      <ins
+        className="kakao_ad_area"
+        style={{ display: "none" }}
+        data-ad-unit={adUnit}
+        data-ad-width={String(width)}
+        data-ad-height={String(height)}
+      />
+    </div>
   );
 }

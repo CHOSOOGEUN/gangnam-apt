@@ -41,10 +41,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <Script
-          src="https://t1.daumcdn.net/kas/static/ba.min.js"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );
