@@ -249,46 +249,36 @@ export default function Home() {
       )}
 
       {result && (
-        <div className="flex justify-center pb-6">
-          <ins
-            className="kakao_ad_area"
-            style={{ display: "none" }}
-            data-ad-unit="DAN-MrHcRNVMy2bQlG6t"
-            data-ad-width="320"
-            data-ad-height="50"
-          ></ins>
-        </div>
+        <ins
+          className="kakao_ad_area"
+          style={{ display: "none" }}
+          data-ad-unit="DAN-MrHcRNVMy2bQlG6t"
+          data-ad-width="320"
+          data-ad-height="50"
+        ></ins>
       )}
 
       {result && (
-        <div className="flex justify-center pb-4">
-          <ins
-            className="kakao_ad_area"
-            style={{ display: "none" }}
-            data-ad-unit="DAN-M0niQMYer1DWHOUH"
-            data-ad-width="300"
-            data-ad-height="250"
-          ></ins>
-        </div>
+        <ins
+          className="kakao_ad_area"
+          style={{ display: "none" }}
+          data-ad-unit="DAN-M0niQMYer1DWHOUH"
+          data-ad-width="300"
+          data-ad-height="250"
+        ></ins>
       )}
 
       <footer className="text-center text-gray-600 text-xs pb-20">
         현실 자각용 사이트입니다 😇 &nbsp;·&nbsp; 가격은 2026년 평균 기준
       </footer>
 
-      {/* Sticky 하단 광고 */}
-      <div
-        className="fixed bottom-0 left-0 right-0 flex justify-center z-50"
-        style={{ background: "rgba(5,5,15,0.9)", backdropFilter: "blur(8px)" }}
-      >
-        <ins
-          className="kakao_ad_area"
-          style={{ display: "none" }}
-          data-ad-unit="DAN-TkltDIU8Q3h51GuJ"
-          data-ad-width="320"
-          data-ad-height="50"
-        ></ins>
-      </div>
+      <ins
+        className="kakao_ad_area"
+        style={{ display: "none" }}
+        data-ad-unit="DAN-TkltDIU8Q3h51GuJ"
+        data-ad-width="320"
+        data-ad-height="50"
+      ></ins>
     </main>
   );
 }
