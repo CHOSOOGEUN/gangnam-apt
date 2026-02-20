@@ -2,16 +2,27 @@
 
 import { useEffect, useRef } from "react";
 
+declare global {
+  interface Window {
+    adfit?: {
+      destroy: (unit: string) => void;
+    };
+  }
+}
+
 interface Props {
   adUnit: string;
   width: number;
   height: number;
+  disabled?: boolean;
 }
 
-export default function KakaoAd({ adUnit, width, height }: Props) {
+export default function KakaoAd({ adUnit, width, height, disabled = false }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (disabled) return;
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -28,16 +39,22 @@ export default function KakaoAd({ adUnit, width, height }: Props) {
     ins.setAttribute("data-ad-unit", adUnit);
     container.appendChild(ins);
 
+    const script = document.createElement("script");
+    script.src = "//t1.daumcdn.net/kas/static/ba.min.js";
+    script.async = true;
+    script.type = "text/javascript";
+    container.appendChild(script);
+
     return () => {
       if (container) {
-        const globalAdfit = (window as any).adfit;
+        const globalAdfit = window.adfit;
         if (globalAdfit) {
           globalAdfit.destroy(adUnit);
         }
         container.innerHTML = "";
       }
     };
-  }, [adUnit, width, height]);
+  }, [adUnit, width, height, disabled]);
 
   return <div ref={containerRef} />;
 }

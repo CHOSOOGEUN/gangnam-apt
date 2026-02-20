@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from "react";
 import ResultCard from "@/components/ResultCard";
 import Confetti from "@/components/Confetti";
-import KakaoAd from "@/components/KakaoAd";
 
 export const REGIONS = [
   { name: "강남", emoji: "👑", price: 3_000_000_000 },
@@ -249,19 +248,9 @@ export default function Home() {
         </div>
       )}
 
-      {result && (
-        <KakaoAd adUnit="DAN-MrHcRNVMy2bQlG6t" width={320} height={50} />
-      )}
-
-      {result && (
-        <KakaoAd adUnit="DAN-M0niQMYer1DWHOUH" width={300} height={250} />
-      )}
-
-      <footer className="text-center text-gray-600 text-xs pb-20">
+      <footer className="text-center text-gray-600 text-xs pb-8">
         현실 자각용 사이트입니다 😇 &nbsp;·&nbsp; 가격은 2026년 평균 기준
       </footer>
-
-      <KakaoAd adUnit="DAN-TkltDIU8Q3h51GuJ" width={320} height={50} />
     </main>
   );
 }
