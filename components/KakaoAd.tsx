@@ -24,7 +24,6 @@ export default function KakaoAd({ adUnit, width, height }: Props) {
   return (
     <ins
       className="kakao_ad_area"
-      style={{ display: "none" }}
       data-ad-unit={adUnit}
       data-ad-width={String(width)}
       data-ad-height={String(height)}
