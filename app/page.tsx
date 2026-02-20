@@ -252,9 +252,23 @@ export default function Home() {
         </div>
       )}
 
-      <footer className="text-center text-gray-600 text-xs pb-8">
+      {result && (
+        <div className="flex justify-center pb-4">
+          <KakaoAd adUnit="DAN-M0niQMYer1DWHOUH" width={300} height={250} />
+        </div>
+      )}
+
+      <footer className="text-center text-gray-600 text-xs pb-20">
         현실 자각용 사이트입니다 😇 &nbsp;·&nbsp; 가격은 2026년 평균 기준
       </footer>
+
+      {/* Sticky 하단 광고 */}
+      <div
+        className="fixed bottom-0 left-0 right-0 flex justify-center z-50"
+        style={{ background: "rgba(5,5,15,0.9)", backdropFilter: "blur(8px)" }}
+      >
+        <KakaoAd adUnit="DAN-TkltDIU8Q3h51GuJ" width={320} height={50} />
+      </div>
     </main>
   );
 }
