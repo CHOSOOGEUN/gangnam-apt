@@ -44,6 +44,7 @@ export default function RootLayout({
         <Script
           src="https://t1.daumcdn.net/kas/static/ba.min.js"
           strategy="afterInteractive"
+          async
         />
       </body>
     </html>
